@@ -16,18 +16,15 @@ class Job:
 	def upload_to_database(self):
 
 def read_jobs():
-	jobs
+	jobs=[]
 	with open('jobs.tmp','r') as file:
 		lines = file.readlines()
 		for line in lines:
 			words = line.split()
-			name = words[1]
-			if not name in users.keys():
-				users[name] = User(name)
-			users[name].append_job(words[0], words[3], words[6:])
-	return users
+			jobs.append_job(words[0], words[1], words[3], words[6:])
+	return jobs
 
-def read_showq(users):
+def read_showq(pre_jobs):
 	jobs = []
 	writelines = []
 	with open('showq.tmp','r') as file:
@@ -37,15 +34,14 @@ def read_showq(users):
 				break
 			writelines.append(line)
 			words = line.split()
-			job = Job(words[0], words[3], words[6:])
+			job = Job(words[0], words[1], words[3], words[6:])
 			jobs.append(job)
 	with open('jobs.tmp','w') as file:
 		file.writelines(writelines)
-	for username, user in users.item():
-		for job in user.jobs:
-			if not job in jobs:
-				job.compute_dtime()
-				job.upload_to_database(username)
+	for pre_job in pre_jobs:
+		if not pre_job.jobname in [job.jobname for job in jobs]:
+			pre_job.end()
+
 
 
 
