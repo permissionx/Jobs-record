@@ -1,4 +1,5 @@
 import datetime 
+import pymysql
 
 
 class Job:
@@ -37,12 +38,14 @@ class Job:
 		return date_seconds
 
 
+def upload(job):
+	db = pymysql.connect(host = "localhost", port = 8701, user = "root", db = 'test' )
 
 
 
 
 
-def read_jobs():
+def read_pre_jobs():
 	jobs=[]
 	with open('jobs.tmp','r') as file:
 		lines = file.readlines()
@@ -51,7 +54,7 @@ def read_jobs():
 			jobs.append_job(words[0], words[1], words[3], words[6:])
 	return jobs
 
-def read_showq(pre_jobs):
+def read_showq():
 	jobs = []
 	writelines = []
 	with open('showq.tmp','r') as file:
@@ -65,11 +68,17 @@ def read_showq(pre_jobs):
 			jobs.append(job)
 	with open('jobs.tmp','w') as file:
 		file.writelines(writelines)
+	return jobs
+
+
+
+def main():
+	pre_jobs = read_pre_jobs()
+	jobs = read_showq()
 	for pre_job in pre_jobs:
 		if not pre_job.jobname in [job.jobname for job in jobs]:
 			pre_job.end()
-
-
+			upload(pre_job)
 
 
 
