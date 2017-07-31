@@ -1,30 +1,22 @@
 import datetime 
 
 class Job:
-	def __init__(self, jobname, proc, starttime):
+	def __init__(self, jobname, owner, proc, starttime):
 		self.jobsname = jobname
+		self.owner = owner
 		self.proc = int(proc)
 		now  = datetime.datetime.now()
 		year = now.strftime('%Y-%m-%d %H:%M:%S')[:4]
 		mons = {"Jua":'1',"Feb":'2',"Mar":'3',"Apr":'4',"May":'5',"Jun":'6',"Jul":'7',"Aug":'8',"Sep":'9',"Oct":'10',"Nov":'11',"Dec":'12'}
 		time_str = year+'-'+mons[starttime[0]]+'-'+starttime[1]+' '+starttime[2]
 		self.starttime = datetime.datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S')
-	def compute_dtime(self):
-		now  = datetime.datetime.now()
-		self.dtime = now - self.starttime
+	def end(self):
+		self.endtime = datetime.datetime.now()
+		self.upload_to_database()
+	def upload_to_database(self):
 
-
-class User:
-	def __init__(self, name):
-		self.name = name
-		self.jobs = []
-	def append_job(self, jobname, proc, starttime):
-		job = Job(jobname, proc, starttime)
-		self.jobs.append(job)
-
-
-def read_tasks():
-	users = {}
+def read_jobs():
+	jobs
 	with open('jobs.tmp','r') as file:
 		lines = file.readlines()
 		for line in lines:
