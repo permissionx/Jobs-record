@@ -1,6 +1,5 @@
 import datetime 
 import pymysql
-import os
 
 
 class Job:
@@ -66,7 +65,6 @@ def read_pre_jobs():
 
 
 def read_showq():
-	os.system('showq > showq.tmp')
 	jobs = []
 	writelines = []
 	with open('showq.tmp','r') as file:
