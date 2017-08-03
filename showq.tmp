@@ -1,20 +1,19 @@
 ACTIVE JOBS--------------------
 JOBNAME            USERNAME      STATE  PROC   REMAINING            STARTTIME
 
-4196               hunter_killer    Running    48  9:19:41:40  Thu Aug  3 13:39:12
-4171               hunter_killer    Running     1 16:08:28:50  Mon Jul 31 02:26:22
-4174               hunter_killer    Running     1 16:08:28:50  Mon Jul 31 02:26:22
-4182               hunter_killer    Running     1 16:08:31:25  Mon Jul 31 02:28:57
-4185               hunter_killer    Running     1 16:09:35:26  Mon Jul 31 03:32:58
-4125                Liyuhao    Running    48 45:05:28:03  Sat Jul 29 23:25:35
-4206                    mff    Running    24 48:17:54:46  Wed Aug  2 11:52:18
-4208                    rqy    Running    48 49:02:50:02  Wed Aug  2 20:47:34
-4209                    rqy    Running    48 49:02:50:33  Wed Aug  2 20:48:05
-4191                Liyuhao    Running    48 49:09:32:31  Thu Aug  3 03:30:03
-4218                chaijun    Running    96 49:19:18:56  Thu Aug  3 13:16:28
+4196               hunter_killer    Running    48  9:12:38:31  Thu Aug  3 13:39:12
+4171               hunter_killer    Running     1 16:01:25:41  Mon Jul 31 02:26:22
+4174               hunter_killer    Running     1 16:01:25:41  Mon Jul 31 02:26:22
+4182               hunter_killer    Running     1 16:01:28:16  Mon Jul 31 02:28:57
+4185               hunter_killer    Running     1 16:02:32:17  Mon Jul 31 03:32:58
+4125                Liyuhao    Running    48 44:22:24:54  Sat Jul 29 23:25:35
+4206                    mff    Running    24 48:10:51:37  Wed Aug  2 11:52:18
+4208                    rqy    Running    48 48:19:46:53  Wed Aug  2 20:47:34
+4209                    rqy    Running    48 48:19:47:24  Wed Aug  2 20:48:05
+4191                Liyuhao    Running    48 49:02:29:22  Thu Aug  3 03:30:03
 
-    11 Active Jobs     364 of  480 Processors Active (75.83%)
-                        18 of   20 Nodes Active      (90.00%)
+    10 Active Jobs     268 of  480 Processors Active (55.83%)
+                        14 of   20 Nodes Active      (70.00%)
 
 IDLE JOBS----------------------
 JOBNAME            USERNAME      STATE  PROC     WCLIMIT            QUEUETIME
@@ -37,4 +36,4 @@ JOBNAME            USERNAME      STATE  PROC     WCLIMIT            QUEUETIME
 4216                    rqy       Idle    48 50:00:00:00  Wed Aug  2 20:49:18
 4217                    rqy       Idle    48 50:00:00:00  Wed Aug  2 20:49:28
 
-Total Jobs: 22   Active Jobs: 11   Idle Jobs: 0   Blocked Jobs: 11
+Total Jobs: 21   Active Jobs: 10   Idle Jobs: 0   Blocked Jobs: 11
