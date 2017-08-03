@@ -80,7 +80,6 @@ def read_showq():
 			jobs.append(job)
 	with open('pre-jobs.tmp','w') as file:
 		file.writelines(writelines)
-		pass
 	return jobs
 
 
