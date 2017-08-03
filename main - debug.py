@@ -1,6 +1,5 @@
 import datetime 
 import pymysql
-import os
 
 
 class Job:
@@ -66,7 +65,6 @@ def read_pre_jobs():
 
 
 def read_showq():
-	os.system('showq > showq.tmp')
 	jobs = []
 	writelines = []
 	with open('showq.tmp','r') as file:
@@ -78,21 +76,26 @@ def read_showq():
 			words = line.split()
 			job = Job(words[0], words[1], words[3], words[6:])
 			jobs.append(job)
+	''' debug
 	with open('pre-jobs.tmp','w') as file:
 		file.writelines(writelines)
 		pass
+	'''
 	return jobs
 
 
 def main():
 	pre_jobs = read_pre_jobs()
 	jobs = read_showq()
+	outjobs = [] #debug
 	for pre_job in pre_jobs:
 		if not pre_job.jobname in [job.jobname for job in jobs]:
 			pre_job.end()
+			outjobs.append(pre_job)  #debug
+	return outjobs  # dubug
 
 if __name__ == '__main__':
-	main()
+	jobs = main()
 
 
 
