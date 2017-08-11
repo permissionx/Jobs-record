@@ -15,8 +15,8 @@ class Job:
 		time_str = year+'-'+mons[starttime[0]]+'-'+starttime[1]+' '+starttime[2]
 		self.starttime = datetime.datetime.strptime(time_str, '%Y-%m-%d %H:%M:%S')
 
-	def end(self):
-		self.endtime = datetime.datetime.now()
+	def end(self, endtime):
+		self.endtime = endtime
 		self.deltatime = self.endtime - self.starttime
 		self.upload_to_database()
 
@@ -61,8 +61,11 @@ def read_pre_jobs():
 		lines = file.readlines()
 		for line in lines:
 			words = line.split()
-			jobs.append(Job(words[0], words[1], words[3], words[6:]))
-	return jobs
+			if words[0] != 'TIME:':
+				jobs.append(Job(words[0], words[1], words[3], words[6:]))
+			else:
+				time = datetime.datetime.strptime(line[6:-1],'%Y-%m-%d %H:%M:%S')
+	return (jobs, time)
 
 
 def read_showq():
@@ -79,15 +82,17 @@ def read_showq():
 			jobs.append(job)
 	with open('pre-jobs.tmp','w') as file:
 		file.writelines(writelines)
+		nowstr = datetime.datetime.strftime(datetime.datetime.now(),'%Y-%m-%d %H:%M:%S')
+		file.write('TIME: '+nowstr+'\n')
 	return jobs
 
 
 def main():
-	pre_jobs = read_pre_jobs()
+	(pre_jobs, pre_time) = read_pre_jobs()
 	jobs = read_showq()
 	for pre_job in pre_jobs:
 		if not pre_job.jobname in [job.jobname for job in jobs]:
-			pre_job.end()
+			pre_job.end(pre_time)
 
 if __name__ == '__main__':
 	main()
